@@ -1,4 +1,4 @@
-AI Engineer & Data Scientist Portfolio - [YOUR NAME]
+AI Engineer & Data Scientist Portfolio - [Muhammad Zulfan Abidin]
 
 Welcome to my professional portfolio. I am a [Your Major, e.g., Computer Science] student with a passion for building efficient and impactful AI solutions. In this repository, you will find 3 end-to-end projects that demonstrate my skills in Machine Learning, Deep Learning (NLP & Computer Vision), and Deployment.
 
