@@ -1,46 +1,59 @@
-# Portofolio AI Engineer & Data Scientist - [NAMA ANDA]
+AI Engineer & Data Scientist Portfolio - [YOUR NAME]
 
-Selamat datang di portofolio profesional saya. Saya adalah seorang mahasiswa [Jurusan Anda, misal: Ilmu Komputer] dengan gairah untuk membangun solusi AI yang efisien dan berdampak. Dalam repositori ini, Anda akan menemukan 3 proyek end-to-end yang menunjukkan keahlian saya dalam *Machine Learning*, *Deep Learning* (NLP & Computer Vision), dan *Deployment*.
+Welcome to my professional portfolio. I am a [Your Major, e.g., Computer Science] student with a passion for building efficient and impactful AI solutions. In this repository, you will find 3 end-to-end projects that demonstrate my skills in Machine Learning, Deep Learning (NLP & Computer Vision), and Deployment.
 
-**Email:** `[zulfanisious20@gmail.com]` | **LinkedIn:** `[www.linkedin.com/in/muhammad-zulfan-abidin-b4427b212]`
+Email: [zulfanisious20@gmail.com] | LinkedIn: [www.linkedin.com/in/muhammad-zulfan-abidin-b4427b212]
 
----
+Featured Projects
 
-## ��� Proyek Unggulan
+Here is a summary of the projects I have completed:
 
-Berikut adalah ringkasan proyek-proyek yang telah saya selesaikan:
+1. [Project 3] Customer Churn Prediction Web App (End-to-End)
 
-### 1. [Proyek 3] Aplikasi Web Prediksi Churn Pelanggan (End-to-End)
+Project Folder: Telco_Churn_Predictor/
 
-* **Folder Proyek:** `Telco_Churn_Predictor/`
-* **Tujuan:** Membangun aplikasi web interaktif untuk memprediksi churn pelanggan menggunakan model *machine learning* klasik.
-* **Keterampilan yang Ditunjukkan:**
-    * **ML Tradisional:** Melatih model **Random Forest Classifier** menggunakan Scikit-learn dengan akurasi 98.5%.
-    * **Deployment:** Menggunakan **Streamlit** untuk mendeploy model (`.joblib`) sebagai UI yang fungsional dan interaktif.
-    * **Full Lifecycle:** Menunjukkan seluruh alur kerja: dari data mentah -> pelatihan -> penyimpanan model -> aplikasi web.
+Objective: To build an interactive web application to predict customer churn using a classic machine learning model.
 
-### 2. [Proyek 2] Analisis Sentimen Teks (Advanced NLP)
+Skills Demonstrated:
 
-* **Folder Proyek:** `NLP_Sentiment_Analysis/`
-* **Tujuan:** Menggunakan *Transfer Learning* untuk melakukan *fine-tuning* model Transformer (BERT) untuk tugas klasifikasi teks.
-* **Keterampilan yang Ditunjukkan:**
-    * **Arsitektur Transformer:** Berhasil mengimplementasikan dan melatih model **BERT** (`bert-base-uncased`).
-    * **NLP Pipeline:** Menangani *tokenization*, *data loading* (Hugging Face `datasets`), dan *fine-tuning* pada dataset ulasan film.
-    * **Analisis Model:** Mengidentifikasi *overfitting* (akurasi 100%) pada dataset sampel kecil (1.000) dan memahami perlunya set data yang lebih besar untuk generalisasi.
+Traditional ML: Trained a Random Forest Classifier model using Scikit-learn with 98.5% accuracy.
 
-### 3. [Proyek 1] Klasifikasi Gambar (GPU-Accelerated CV)
+Deployment: Used Streamlit to deploy the model (.joblib) as a functional and interactive UI.
 
-* **Folder Proyek:** `Computer_Vision_Classifier/`
-* **Tujuan:** Menggunakan *Transfer Learning* dengan **ResNet18** untuk mengklasifikasikan gambar, dengan akselerasi **NVIDIA RTX 2050**.
-* **Keterampilan yang Ditunjukkan:**
-    * **GPU Acceleration:** Berhasil mengonfigurasi *environment* PyTorch (`torch-gpu`) untuk menggunakan **CUDA**, yang mempercepat pelatihan secara signifikan.
-    * **Computer Vision:** Menerapkan *pipeline* CV modern, termasuk *image transformation* (mengubah ukuran 32x32 -> 224x224) dan normalisasi.
-    * **Hasil:** Mencapai **akurasi 79.5%** pada dataset CIFAR-10 hanya dalam 3 *epoch*, membuktikan efektivitas *Transfer Learning*.
+Full Lifecycle: Demonstrated the entire workflow: from raw data -> training -> model saving -> web application.
 
----
+2. [Project 2] Text Sentiment Analysis (Advanced NLP)
 
-## ���️ Lingkungan Teknis
+Project Folder: NLP_Sentiment_Analysis/
 
-* **Frameworks:** PyTorch, Scikit-learn, Transformers (Hugging Face), Streamlit, Pandas, NumPy
-* **Hardware:** NVIDIA GeForce RTX 2050 (Akselerasi CUDA)
-* **Tools:** VS Code, Git, Anaconda (Conda Environments)
+Objective: To use Transfer Learning to fine-tune a Transformer (BERT) model for a text classification task.
+
+Skills Demonstrated:
+
+Transformer Architecture: Successfully implemented and trained a BERT model (bert-base-uncased).
+
+NLP Pipeline: Handled tokenization, data loading (Hugging Face datasets), and fine-tuning on a movie review dataset.
+
+Model Analysis: Identified overfitting (100% accuracy) on a small sample dataset (1,000) and understood the need for a larger dataset for generalization.
+
+3. [Project 1] Image Classification (GPU-Accelerated CV)
+
+Project Folder: Computer_Vision_Classifier/
+
+Objective: To use Transfer Learning with ResNet18 to classify images, accelerated by an NVIDIA RTX 2050.
+
+Skills Demonstrated:
+
+GPU Acceleration: Successfully configured the PyTorch (torch-gpu) environment to use CUDA, which significantly accelerated training.
+
+Computer Vision: Implemented a modern CV pipeline, including image transformation (resizing 32x32 -> 224x224) and normalization.
+
+Results: Achieved 79.5% accuracy on the CIFAR-10 dataset in just 3 epochs, proving the effectiveness of Transfer Learning.
+
+️ Technical Environment
+
+Frameworks: PyTorch, Scikit-learn, Transformers (Hugging Face), Streamlit, Pandas, NumPy
+
+Hardware: NVIDIA GeForce RTX 2050 (CUDA Acceleration)
+
+Tools: VS Code, Git, Anaconda (Conda Environments)
