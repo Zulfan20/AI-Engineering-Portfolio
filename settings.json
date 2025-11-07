@@ -1,0 +1,5 @@
+{
+    // The path should be relative to your workspace folder (AI-Engineering-Portfolio)
+    // This tells VS Code exactly which Python executable to use.
+    "python.defaultInterpreterPath": ".venv\\Scripts\\python.exe"
+}
