@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch-to-Reality</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Make the canvas responsive and maintain aspect ratio */
+        #drawCanvas {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            max-width: 512px; /* Match the AI model's preferred size */
+            touch-action: none; /* Disable scrolling on canvas on mobile */
+        }
+        #resultImage {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            max-width: 512px;
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-white p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        <header class="text-center mb-6">
+            <h1 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                Sketch-to-Reality AI
+            </h1>
+            <p class="text-gray-300 text-lg mt-2">Draw a sketch, write a prompt, and let your GPU do the magic.</p>
+        </header>
+
+        <!-- Main Controls -->
+        <div class="flex flex-col md:flex-row gap-4 mb-4">
+            <input type="text" id="promptInput" placeholder="Enter a prompt (e.g., 'photograph of a cat, high detail')" 
+                   class="flex-grow p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:ring-2 focus:ring-purple-500 focus:outline-none">
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mb-6">
+             <button id="generateBtn" 
+                    class="flex-grow p-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold rounded-lg shadow-lg hover:scale-105 transition-transform duration-200">
+                Generate Image
+            </button>
+            <button id="clearBtn" 
+                    class="sm:w-32 p-4 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-500 transition-colors duration-200">
+                Clear
+            </button>
+        </div>
+       
+        <!-- Artboards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Drawing Canvas -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-2 text-center">1. Your Sketch</h2>
+                <canvas id="drawCanvas" class="bg-white rounded-lg shadow-2xl border-2 border-gray-400 cursor-crosshair"></canvas>
+            </div>
+            
+            <!-- Result Image -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-2 text-center">2. AI Result</h2>
+                <div id="resultContainer" class="bg-gray-900 rounded-lg shadow-2xl border-2 border-gray-700 flex items-center justify-center" style="aspect-ratio: 1 / 1; max-width: 512px; margin: 0 auto;">
+                    <img id="resultImage" src="https://placehold.co/512x512/111827/4B5563?text=Your+AI+Image+Here" alt="AI Generated Image" class="rounded-lg">
+                    
+                    <!-- Loading Overlay -->
+                    <div id="loadingOverlay" class="absolute inset-0 bg-black bg-opacity-75 flex-col items-center justify-center text-2xl hidden" style="max-width: 512px; max-height: 512px; margin: auto;">
+                        <svg class="animate-spin h-12 w-12 text-white mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <p>Generating... (10-30s)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get all our HTML elements
+        const canvas = document.getElementById('drawCanvas');
+        const ctx = canvas.getContext('2d');
+        const promptInput = document.getElementById('promptInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const resultImg = document.getElementById('resultImage');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const resultContainer = document.getElementById('resultContainer');
+
+        let drawing = false;
+
+        // --- Set Canvas Size (matches the model) ---
+        canvas.width = 512;
+        canvas.height = 512;
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+        // --- Drawing Functions ---
+        function getMousePos(evt) {
+            const rect = canvas.getBoundingClientRect();
+            // Adjust for scaled canvas size
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            return {
+                x: (evt.clientX - rect.left) * scaleX,
+                y: (evt.clientY - rect.top) * scaleY
+            };
+        }
+
+        function startDrawing(e) {
+            drawing = true;
+            const pos = getMousePos(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+        }
+
+        function stopDrawing() {
+            drawing = false;
+        }
+
+        function draw(e) {
+            if (!drawing) return;
+            e.preventDefault(); // Prevent page scrolling
+            
+            const pos = getMousePos(e);
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = 'black';
+            
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        }
+
+        // --- Event Listeners for Drawing ---
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        canvas.addEventListener('mousemove', draw);
+        
+        // Touch support for mobile
+        canvas.addEventListener('touchstart', (e) => startDrawing(e.touches[0]));
+        canvas.addEventListener('touchend', stopDrawing);
+        canvas.addEventListener('touchmove', (e) => draw(e.touches[0]));
+
+
+        // --- Clear Button ---
+        clearBtn.addEventListener('click', () => {
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            resultImg.src = "https://placehold.co/512x512/111827/4B5563?text=Your+AI+Image+Here";
+        });
+
+        // --- Generate Button (The "Magic") ---
+        generateBtn.addEventListener('click', async () => {
+            const prompt = promptInput.value;
+            const canvasImage = canvas.toDataURL('image/png'); // Get sketch as base64
+
+            if (!prompt) {
+                alert('Please enter a text prompt!');
+                return;
+            }
+
+            console.log("Sending prompt and sketch to server...");
+            loadingOverlay.style.display = 'flex'; // Show loading spinner
+            resultContainer.appendChild(loadingOverlay);
+
+
+            try {
+                // Send the data to our Python server
+                const response = await fetch('http://127.0.0.1:5000/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        prompt: prompt, 
+                        image: canvasImage 
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                
+                // Put the new AI-generated image into the result box
+                resultImg.src = data.image;
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Check the Python server console.');
+            } finally {
+                loadingOverlay.style.display = 'none'; // Hide loading spinner
+            }
+        });
+
+    </script>
+</body>
+</html>

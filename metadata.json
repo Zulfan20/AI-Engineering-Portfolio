@@ -1,0 +1,4 @@
+{
+  "name": "AI Logo Generator",
+  "description": "A web application that uses the Gemini API to generate a startup logo based on a user's descriptive prompt. Users can specify elements, colors, and text to create a unique logo."
+}

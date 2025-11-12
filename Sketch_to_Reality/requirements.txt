@@ -1,0 +1,7 @@
+flask
+flask-cors
+diffusers
+transformers
+accelerate
+Pillow
+opencv-python-headless
