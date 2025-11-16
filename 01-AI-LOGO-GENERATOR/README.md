@@ -1,100 +1,100 @@
-# Portofolio AI Logo Generator
+# AI Logo Generator Portfolio Project
 
-Ini adalah proyek portofolio *full-stack* yang menunjukkan implementasi *end-to-end* dari sistem AI generatif. Aplikasi ini memungkinkan pengguna untuk menghasilkan logo unik dari *prompt* teks, dengan menjalankan model AI (Stable Diffusion 1.5) secara lokal di GPU pengguna.
+This is a full-stack project demonstrating an end-to-end implementation of a generative AI system. The application allows users to generate unique logos from text prompts by running the AI model (Stable Diffusion 1.5) locally on the user's GPU.
 
-Proyek ini dipisahkan menjadi dua bagian:
-1.  **Frontend (React):** Antarmuka pengguna (UI) modern yang dibuat dengan React, TypeScript, dan Vite.
-2.  **Backend (Python):** Sebuah API asinkron berperforma tinggi yang dibuat dengan FastAPI untuk mengontrol GPU dan menjalankan model AI.
-
----
-
-## Ì≥∏ Demo
-
-*Sangat disarankan untuk Anda merekam layar Anda saat menggunakan aplikasi (dalam format GIF) dan meletakkannya di sini.*
-
-`[Tempatkan GIF demo proyek Anda di sini. Ini sangat penting untuk portofolio!]`
+The project is architected into two main parts:
+1.  **Frontend (React):** A modern user interface built with React, TypeScript, and Vite.
+2.  **Backend (Python):** A high-performance, asynchronous API built with FastAPI to control the GPU and run the AI model.
 
 ---
 
-## ‚ú® Fitur Utama
+## üì∏ Demo
 
-* **Generasi Teks-ke-Gambar:** Mengubah *prompt* teks (misal: "logo minimalis kepala robot") menjadi gambar logo.
-* **Eksekusi GPU Lokal:** Menjalankan model AI Stable Diffusion 1.5 secara langsung di GPU NVIDIA (RTX 2050) pengguna melalui PyTorch dan CUDA, bukan bergantung pada API eksternal.
-* **Arsitektur Full-Stack:** Memisahkan *frontend* dan *backend* untuk skalabilitas dan pemeliharaan yang lebih baik.
-* **Backend API Cepat:** Menggunakan **FastAPI** untuk *backend* Python yang asinkron dan cepat.
-* **Frontend Modern:** Menggunakan **React** dan **TypeScript** untuk UI yang interaktif dan aman secara tipe (*type-safe*).
+*It is highly recommended to record a GIF of your application in use and place it here. This is crucial for a portfolio.*
+
+`[Place your project demo GIF here!]`
 
 ---
 
-## Ì≤ª Tumpukan Teknologi (Tech Stack)
+## ‚ú® Key Features
 
-| Kategori | Teknologi |
+* **Text-to-Image Generation:** Transforms text prompts (e.g., "a minimalist logo of a robot head") into images.
+* **Local GPU Execution:** Runs the Stable Diffusion 1.5 model directly on the user's NVIDIA GPU (RTX 2050) via PyTorch and CUDA, rather than relying on an external API.
+* **Full-Stack Architecture:** Decouples the frontend and backend for better scalability and maintenance.
+* **Fast API Backend:** Uses **FastAPI** for an asynchronous, high-speed Python backend.
+* **Modern Frontend:** Uses **React** and **TypeScript** for an interactive, type-safe UI.
+
+---
+
+## üíª Tech Stack
+
+| Category | Technology |
 | :--- | :--- |
 | **Frontend** | React, TypeScript, Vite, CSS |
 | **Backend** | Python 3.10+, FastAPI, Uvicorn |
 | **AI / ML** | PyTorch, `diffusers` (Hugging Face), `accelerate`, CUDA |
-| **Model AI** | `runwayml/stable-diffusion-v1.5` |
-| **Manajemen** | Anaconda (Conda), NPM, Git |
+| **AI Model** | `runwayml/stable-diffusion-v1.5` |
+| **Management** | Anaconda (Conda), NPM, Git |
 
 ---
 
-## Ì∫Ä Cara Menjalankan Secara Lokal
+## üöÄ How to Run Locally
 
-Proyek ini terdiri dari dua server yang harus dijalankan secara bersamaan di dua terminal terpisah.
+This project consists of two separate servers that must be run simultaneously in two separate terminals.
 
-### Prasyarat
+### Prerequisites
 
-* **NVIDIA GPU** dengan dukungan CUDA.
-* **Anaconda** (atau Miniconda).
-* **Node.js** (v18+ direkomendasikan).
+* An **NVIDIA GPU** with CUDA support.
+* **Anaconda** (or Miniconda).
+* **Node.js** (v18+ recommended).
 
 ---
 
-### 1. Ì∞ç Backend (Server Python FastAPI)
+### 1. üêç Backend (Python FastAPI Server)
 
-Server ini akan memuat model ke VRAM Anda dan menunggu *request* dari React.
+This server will load the AI model into your VRAM and listen for requests from the React app.
 
-1.  Buka **Anaconda Prompt**.
-2.  Masuk ke folder *backend* proyek:
+1.  Open **Anaconda Prompt**.
+2.  Navigate to the project's backend folder:
     ```bash
     cd C:\Users\zulfa\...\01-AI-LOGO-GENERATOR\ai-logo-backend
     ```
-3.  Aktifkan *environment* Conda yang telah Anda buat:
+3.  Activate the Conda environment you created:
     ```bash
     conda activate ai_backend
     ```
-4.  Jalankan server API menggunakan Uvicorn:
+4.  Run the API server using Uvicorn:
     ```bash
     uvicorn main:app --reload
     ```
-5.  **PENTING:** Biarkan terminal ini terbuka. Pertama kali dijalankan, server akan mengunduh model (beberapa GB) dan memuatnya ke GPU Anda. Ini mungkin butuh beberapa menit.
-6.  Server Anda sekarang berjalan di `http://127.0.0.1:8000`.
+5.  **IMPORTANT:** Leave this terminal open. On the first run, the server will download the model (several GBs) and load it onto your GPU. This may take a few minutes.
+6.  Your server is now running at `http://127.0.0.1:8000`.
 
 ---
 
-### 2. ‚öõÔ∏è Frontend (Server React Vite)
+### 2. ‚öõÔ∏è Frontend (React Vite Server)
 
-Server ini akan menjalankan antarmuka pengguna (UI) di browser Anda.
+This server will run the user interface in your browser.
 
-1.  Buka **Terminal BARU** (Anda bisa menggunakan CMD, PowerShell, atau Anaconda Prompt kedua).
-2.  Masuk ke folder *root* proyek (folder frontend):
+1.  Open a **NEW Terminal** (you can use CMD, PowerShell, or a second Anaconda Prompt).
+2.  Navigate to the project's root folder (the frontend folder):
     ```bash
     cd C:\Users\zulfa\...\01-AI-LOGO-GENERATOR\
     ```
-3.  (Jika ini pertama kalinya) Instal semua dependensi Node.js:
+3.  (If this is your first time) Install all Node.js dependencies:
     ```bash
     npm install
     ```
-4.  Jalankan server *development* React:
+4.  Run the React development server:
     ```bash
     npm run dev
     ```
-5.  **PENTING:** Biarkan terminal ini juga terbuka.
+5.  **IMPORTANT:** Leave this terminal open as well.
 
 ---
 
-### 3. Buka Aplikasi
+### 3. Open the Application
 
-Buka browser Anda dan kunjungi alamat yang diberikan oleh server Vite (biasanya `http://localhost:5173`).
+Open your browser and navigate to the address provided by the Vite server (usually `http://localhost:5173`).
 
-Anda sekarang dapat menggunakan aplikasi AI Logo Generator!
+You can now use the AI Logo Generator application!
