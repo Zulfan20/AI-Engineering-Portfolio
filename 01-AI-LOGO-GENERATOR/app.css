@@ -1,0 +1,179 @@
+/* --- Global Styles --- */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* --- App Component Styles --- */
+.App {
+  width: 100%;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+hr {
+  width: 100%;
+  border: 1px solid #444;
+}
+
+/* --- LogoGenerator Component Styles --- */
+
+/* Container untuk generator */
+.logo-generator {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Input field */
+.logo-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background-color: #333;
+  color: white;
+  box-sizing: border-box; /* Penting agar padding berfungsi dengan width */
+}
+
+.logo-input:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 5px #646cff;
+}
+
+/* Button */
+.generate-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+.generate-button:hover {
+  border-color: #646cff;
+  background-color: #2a2a2a;
+}
+
+.generate-button:disabled {
+  background-color: #555;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* --- Status Messages --- */
+.error-message {
+  color: #ff6b6b;
+  font-weight: 500;
+  text-align: left;
+  background-color: #4d2a2a;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.loading-message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: #333;
+  border-radius: 8px;
+  border: 1px solid #555;
+}
+
+/* --- Result Image --- */
+.result-container {
+  margin-top: 1rem;
+}
+
+.result-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #555;
+  background-color: #1a1a1a;
+}
+
+/* --- Light Mode (Otomatis jika browser Anda light mode) --- */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  hr {
+    border-color: #ddd;
+  }
+
+  .generate-button {
+    background-color: #f9f9f9;
+  }
+  
+  .generate-button:hover {
+    background-color: #f0f0f0;
+  }
+
+  .generate-button:disabled {
+    background-color: #ddd;
+    color: #888;
+  }
+
+  .logo-input {
+    background-color: #fff;
+    color: #213547;
+    border: 1px solid #ccc;
+  }
+
+  .loading-message {
+    background-color: #f9f9f9;
+    border-color: #ddd;
+  }
+
+  .result-image {
+    border-color: #ddd;
+    background-color: #f9f9f9;
+  }
+
+  .error-message {
+    background-color: #ffeaea;
+    color: #c91c1c;
+  }
+}

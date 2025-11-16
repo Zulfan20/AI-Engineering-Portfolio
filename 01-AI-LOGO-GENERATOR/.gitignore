@@ -1,24 +1,58 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# ==================================
+# File Umum (OS & Editor)
+# ==================================
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+.vscode/
+.idea/
+
+# ==================================
+# Frontend (React / Vite / Node.js)
+# ==================================
+# Folder dependensi yang SANGAT BESAR
+node_modules/
+
+# Folder build hasil produksi
+dist/
+build/
+
+# File Environment (SANGAT PENTING!)
+# Ini berisi API keys dan rahasia lainnya.
+# JANGAN PERNAH di-upload ke GitHub.
+.env
+.env.local
+.env.*.local
+
+# Log error
+npm-debug.log*
+yarn-error.log
+package-lock.json.bk
+
+# ==================================
+# Backend (Python / Anaconda)
+# ==================================
+# Folder virtual environment (jika Anda pakai venv)
+venv/
+.venv/
+env/
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# Folder build/distribusi Python
+*.egg-info/
+dist/
+build/
+
+# ==================================
+# File Model AI (SANGAT PENTING!)
+# ==================================
+# Script Anda ('main.py') mengunduh model ke
+# cache komputer Anda, jadi itu aman.
+#
+# Tapi jika Anda men-download file model
+# (.ckpt atau .safetensors) secara manual ke
+# proyek Anda, jangan di-upload karena ukurannya GIGABYTE.
+*.ckpt
+*.safetensors
